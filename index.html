@@ -6,16 +6,135 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Document</title>
+    <style >
+        .vuong{
+            width: 100px;
+            height: 100px;
+            background-color: bisque;
+            display: inline-block;
+            margin: 10px;
+        }
+        .do{
+            background-color: red;
+        }
+        .xanh{
+            background-color: green;
+        }
+        .vang{
+            background-color: yellow;
+        }
+    </style>
 </head>
 <body>
-    <div id="object" >{{content}}</div>
+    <div id="object" >
+    
+        {{content}}  {{content}}  {{content}} 
+        <p v-html="html" ></p>
+        
+        <input type="text" v-on:input="ChangeValue" v-model="content" >
+        <button v-on:click="UpDem" class="btn">
+                up
+        </button>
+        <button v-on:click="dem++" class="btn">
+                up 2
+        </button>
+        <button v-on:click="dem--" class="btn">
+                up 2
+        </button>
+        <span class="badge badge-primary" >{{ dem }}</span>
+        <span class="badge badge-primary" >{{ dem > 10 ? 'bạn đã quá giới hạn' : 'Vẫn ổn' }}</span>
+        <div style="height:120px;" v-on:mouseover="tinhtoado">
+            <p>{{x}} / {{y}}</p>
+        </div>
+        <dir>
+            <div class="vuong" @click="quanlido= !quanlido" :class="{do: quanlido }" ></div>
+            <div class="vuong" :class="{do: quanlido}" ></div>
+            <div class="vuong" :class="color"  ></div>
+        </dir>
+        <ul>
+            <li v-for="meu,i in color_menu" >{{meu}} {{i}}</li>
+        </ul>
+        <template v-for="meu,i in color_menu">
+            <h3>{{meu}}</h3>
+            <h3>{{i}}</h3>
+        </template>
+        <button @click="color_menu.push('add')">Click</button>
+        
+        <div v-for="(items) in persons" class="list-group">
+            <div v-for="(item,key,index) in items" >
+                {{key}} : {{item}} 
+            </div>
+            
+        </div>
+        
+        
+    </div>
     <script>
         new Vue({
             el: '#object',
             data:{
-                content : 'hi im real',
+                content: 'hi im real',
+                html: '<a href="https://www.facebook.com/">Google</a>',
+                dem: 0,
+                x: 0,
+                y: 0,
+                quanlido: false,
+                color: 'vang',
+                color_menu: ['vang','cam','do','xanh lam'],
+                persons:[
+                    {
+                        name : 'Tan 1',
+                        age : '1t',
+                        class : 'oc cho 1'
+                    },
+                    {
+                        name : 'Tan 2',
+                        age : '2t',
+                        class : 'oc cho 2'
+                    },
+                    {
+                        name : 'Tan 3',
+                        age : '3t',
+                        class : 'oc cho 3'
+                    }
+
+                ]
+
+            },
+            computed:{
+                changecolor:function(){
+                  return{
+                      do: this.quanlido,
+                      color: !this.quanlido
+                  }
+               },
+
+            },
+
+
+            methods:{
+                ChangeValue: function(event) {
+                    this.content = event.target.value;
+                },
+                SayHello: function(){
+                    Document.write('hello im real')
+                },
+                ShowPost: function(){
+                    this.content = "Noi dung thay doi"
+                    console.log(this.content)
+                    return this.content;
+                },
+                UpDem: function(){
+                    console.log(this.dem)
+                    this.dem++;
+                },
+                tinhtoado: function(event){
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                }
             },
         }) 
+
     </script>
 </body>
 </html>
