@@ -11,9 +11,9 @@
       <div class="row">
         <div class="col-12">
           <!-- <appCart cardDM="cart2" ><p slot="title">This is my car</p><p slot="content">This is my car 2</p></appCart> -->
-          <component :is="Slectedcpn"></component>
+          <keep-alive><component :is="Slectedcpn"></component></keep-alive>
         </div>
-      </div>
+      </div> 
     </div>
   </div>
 </template>
