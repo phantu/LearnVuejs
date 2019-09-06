@@ -1,0 +1,14 @@
+<template>
+  <div>
+      <h1>hello mother fucker</h1>
+      <contact-component></contact-component>
+  </div>
+</template>
+
+
+
+<script>
+export default {
+  
+}
+</script>

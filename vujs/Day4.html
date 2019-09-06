@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vuejs/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+
+    <title>Document</title>
+    <style>
+        .blood_1 {
+            
+            height: 50px;
+            background: green;
+            margin-top: 20px;
+        }
+        .blood_2 {
+            margin-left: auto;
+            width: 100%;
+            height: 50px;
+            background: green;
+            margin-top: 20px;
+        }
+        .wrap-blood{
+            margin: 0 40px;
+        }
+    </style>
+</head>
+
+<body >
+    <div id="app">
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+    </div>
+    <div id="app_2">
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+        <mycomponent></mycomponent>
+    </div>
+    
+  
+    <script>
+  
+      /* var data = {
+        test : ' tao thay r ',
+      } */
+
+      var cpt = {
+        data:function() {
+          return{
+            test : 'ahihi',
+          }  
+        },
+        template:'<h1> tao noi {{test}}  </br> <button @click = "changetest">Change now</button> </h1>',
+        methods: {
+          changetest:function(){
+            this.test = 'tao doi r';
+          }
+        }
+  
+      }
+      new Vue({
+        el : "#app",
+        components : {
+          'mycomponent' : cpt
+        }
+        
+      })
+      new Vue({
+        el : "#app_2",
+        components : {
+          'mycomponent' : cpt
+        }
+      })
+  </script>
+</body>
+
+</html>
